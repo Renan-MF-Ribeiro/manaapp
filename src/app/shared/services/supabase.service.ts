@@ -1,3 +1,4 @@
+import { environment } from '@environments/environment';
 import { Injectable } from '@angular/core';
 import {
   AuthSession,
@@ -6,7 +7,6 @@ import {
   createClient,
 } from '@supabase/supabase-js';
 import { BehaviorSubject } from 'rxjs';
-import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
