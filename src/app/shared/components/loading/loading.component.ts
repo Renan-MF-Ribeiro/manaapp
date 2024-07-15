@@ -7,7 +7,7 @@ import { LoadingService } from '@services/loading.service';
   imports: [],
   template: `
     @if (_loading.getStatus()) {
-      <div class="loading-spinner">
+      <div class="loading-spinner animate-pulse">
         <img src="../../../../assets/logo.png" alt="Loading..." />
       </div>
     }
@@ -24,21 +24,6 @@ import { LoadingService } from '@services/loading.service';
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    .loading-spinner img {
-      width: 256px;
-      height: 256px;
-      animation: spin 3.5s linear infinite;
-    }
-
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
     }
   `,
 })

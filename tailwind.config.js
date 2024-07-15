@@ -5,7 +5,15 @@ module.exports = {
   ],
   theme: {
     extend: {},
-    extend: {},
+    animation: {
+      pulse: 'pulse 2s infinite',
+    },
+    keyframes: {
+      pulse: {
+        '0%, 100%': { transform: 'scale(1)' },
+        '50%': { transform: 'scale(1.1)' },
+      },
+    },
     fontFamily: {
       primary: ['"Poppins"', 'sans-serif'],
       lexend: ['"Lexend"', 'sans-serif'],

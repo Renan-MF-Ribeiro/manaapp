@@ -57,11 +57,17 @@ export class RegisterComponent {
         .signUp(value.email!, value.password!)
         .subscribe({
           next: (value) => {
-            this._loading.hide();
-            console.log(value);
-            this._swalService
-              .success('Sucesso', 'Cadastro realizado com sucesso!')
-              .then(() => this._router.navigate(['home']));
+            if (value.error) {
+              this._loading.hide();
+              console.error(value.error.message);
+              this._swalService.error('Ops', 'Erro ao realizar cadastro');
+            } else {
+              this._loading.hide();
+              console.log(value);
+              this._swalService
+                .success('Sucesso', 'Cadastro realizado com sucesso!')
+                .then(() => this._router.navigate(['home']));
+            }
           },
           error: (error) => {
             this._loading.hide();
