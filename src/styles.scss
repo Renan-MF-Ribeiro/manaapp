@@ -1,1 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
+@layer tailwind-base, primeng, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer primeng;
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+@layer components {
+  .display_large {
+    @apply text-[57px] font-medium text-primaryText font-primary;
+  }
+
+  .display_medium {
+    @apply text-[45px] font-medium text-primaryText font-primary;
+  }
+
+  .display_small {
+    @apply text-[32px] font-light text-primaryText font-lexend;
+  }
+
+  .headline_large {
+    @apply text-[32px] font-medium text-primaryText font-primary;
+  }
+
+  .headline_medium {
+    @apply text-[28px] font-semibold text-primary font-lexend;
+  }
+
+  .headline_small {
+    @apply text-[20px] font-medium text-primaryText font-lexend;
+  }
+
+  .title_large {
+    @apply text-[22px] font-medium text-primaryText font-primary;
+  }
+
+  .title_medium {
+    @apply text-[18px] font-medium text-secondaryText font-lexend;
+  }
+
+  .title_small {
+    @apply text-[16px] font-normal text-textColor font-lexend;
+  }
+
+  .label_large {
+    @apply text-[14px] font-medium text-primaryText font-primary;
+  }
+
+  .label_medium {
+    @apply text-[12px] font-medium text-primaryText font-primary;
+  }
+
+  .label_small {
+    @apply text-[11px] font-medium text-primaryText font-primary;
+  }
+
+  .body_large {
+    @apply text-[16px] font-normal text-primaryText font-primary;
+  }
+
+  .body_medium {
+    @apply text-[14px] font-normal text-primaryText font-lexend;
+  }
+
+  .body_small {
+    @apply text-[14px] font-normal text-secondaryText font-lexend;
+  }
+
+}
