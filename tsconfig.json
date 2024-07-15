@@ -13,15 +13,21 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
+    "paths": {
+      "@services/*": ["./src/app/shared/services/*"],
+      "@components/*": ["./src/app/shared/components/*"],
+      "@validators/*": ["./src/app/shared/validators/*"],
+      "@forms/*": ["./src/app/shared/components/form-components/*"],
+      "@pages/*": ["./src/app/pages/*"],
+      "@assets/*": ["./src/assets/*"]
+    },
     "moduleResolution": "node",
     "importHelpers": true,
+
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -21,6 +21,18 @@ module.exports = {
       'tertiary': '#3F8EBF',
       'background': '#364959',
       'alternate': '#F0F2F2',
+      'textColor': '#ffffff',
+      //Semantic colors
+      'success': '#04a24c',
+      'error': '#e21c3d',
+      'warning': '#fcdc0c',
+      'info': '#1c4494',
+      'transparent': 'transparent',
+      //utility colors
+      'primaryText': '#ffffff',
+      'secondaryText': '#8b97a2',
+      'primaryBackground': '#364959',
+      'secondaryBackground': '#4C6173',
     }
   },
   plugins: [],

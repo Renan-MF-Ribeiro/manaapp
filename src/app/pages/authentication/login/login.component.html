@@ -1,0 +1,61 @@
+<div class="flex flex-col gap-2">
+  <form
+    [formGroup]="form"
+    class="flex flex-col gap-8 my-4"
+    (keydown.enter)="login()"
+  >
+    <div class="flex flex-col gap-2">
+      <p-floatLabel>
+        <input
+          class="w-full bg-secondaryBackground border-none text-textColor"
+          inputId="username"
+          type="email"
+          placeholder="Insira seu endereço de email"
+          pInputText
+          formControlName="email"
+        />
+        <label class="body_medium" for="username">E-mail</label>
+      </p-floatLabel>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <p-floatLabel>
+        <p-password
+          inputId="password"
+          class="[&>.p-component>.p-component]:text-textColor [&>.p-component]:w-full [&>.p-component>.p-component]:w-full [&>.p-component>.p-component]:bg-secondaryBackground [&>.p-component>.p-component]:border-none"
+          type="password"
+          placeholder="insira sua senha"
+          [toggleMask]="true"
+          [feedback]="false"
+          formControlName="password"
+        />
+        <label class="body_medium" for="password">Senha</label>
+      </p-floatLabel>
+    </div>
+  </form>
+  <div class="flex p-4 justify-between">
+    <a [routerLink]="['forgot']" class="body_small border-none bg-transparent">
+      Esqueceu sua senha?
+    </a>
+    <button
+      class="title_small bg-primary border-none rounded-button px-12 h-12 disabled:brightness-50"
+      (click)="login()"
+      [disabled]="form.invalid"
+    >
+      Entrar
+    </button>
+  </div>
+  <a routerLink="register">
+    <div
+      class="m-4 py-4 px-8 rounded-lg flex bg-secondaryBackground body_medium justify-between items-center"
+    >
+      <span>Não tem uma conta?</span>
+      <span
+        class="flex gap-2 justify-center items-center text-primary cursor-pointer"
+      >
+        <h3>Criar</h3>
+        <i class="pi pi-arrow-right"></i>
+      </span>
+    </div>
+  </a>
+</div>

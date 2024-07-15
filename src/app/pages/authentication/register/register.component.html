@@ -1,0 +1,75 @@
+<div class="flex flex-col gap-2">
+  <h1 class="display_small">Vamos começar</h1>
+  <h2 class="title_medium">Crie sua conta abaixo.</h2>
+  <form [formGroup]="form" class="flex flex-col gap-8 my-4">
+    <div class="flex flex-col gap-2">
+      <p-floatLabel>
+        <input
+          class="w-full bg-secondaryBackground border-none text-textColor"
+          inputId="username"
+          type="email"
+          placeholder="Insira seu endereço de email"
+          pInputText
+          formControlName="email"
+        />
+        <label class="body_medium" for="username">E-mail</label>
+      </p-floatLabel>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <p-floatLabel>
+        <app-password-checker
+          [form]="form"
+          controlName="password"
+          label="Senha"
+        ></app-password-checker>
+      </p-floatLabel>
+    </div>
+    <div class="flex flex-col gap-2">
+      <p-floatLabel>
+        <p-password
+          inputId="confirmPassword"
+          class="[&>.p-component>.p-component]:text-textColor [&>.p-component]:w-full [&>.p-component>.p-component]:w-full [&>.p-component>.p-component]:bg-secondaryBackground [&>.p-component>.p-component]:border-none"
+          type="password"
+          placeholder="insira sua senha"
+          [toggleMask]="true"
+          [feedback]="false"
+          formControlName="confirmPassword"
+        />
+        <label class="body_medium" for="confirmPassword">
+          Confirmação da Senha
+        </label>
+        @if (
+          form.errors?.["passwordMismatch"] &&
+          form.get("confirmPassword")?.touched
+        ) {
+          <small class="text-primaryText ml-4">
+            <span>As senhas não coincidem.</span>
+          </small>
+        }
+      </p-floatLabel>
+    </div>
+  </form>
+  <div class="flex p-4 justify-end">
+    <button
+      class="title_small bg-primary border-none rounded-button px-4 h-12 disabled:brightness-50"
+      (click)="register()"
+      [disabled]="form.invalid"
+    >
+      Criar uma conta
+    </button>
+  </div>
+  <a routerLink="">
+    <div
+      class="m-4 py-4 px-8 rounded-lg flex bg-secondaryBackground body_medium justify-between items-center"
+    >
+      <span
+        class="flex gap-2 justify-center items-center text-primary cursor-pointer"
+      >
+        <i class="pi pi-arrow-left"></i>
+        <h3>Login</h3>
+      </span>
+      <span>Já tem uma conta?</span>
+    </div>
+  </a>
+</div>
