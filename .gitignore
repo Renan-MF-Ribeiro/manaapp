@@ -44,6 +44,5 @@ Thumbs.db
 .nx/cache
 .nx/workspace-data
 .env
-/src/environments/environment.ts
 
 
