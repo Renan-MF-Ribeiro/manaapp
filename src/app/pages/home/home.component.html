@@ -1,1 +1,11 @@
-<p>home works!</p>
+<div class="h-screen flex w-full bg-background">
+  <router-outlet></router-outlet>
+  <p-dock [model]="actions" position="bottom">
+    <ng-template pTemplate="item" let-item>
+      <div class="flex flex-col text-primaryText items-center gap">
+        <span class="pi text-3xl" [ngClass]="item.icon"></span>
+        <span>{{ item.display }}</span>
+      </div>
+    </ng-template>
+  </p-dock>
+</div>

@@ -1,0 +1,30 @@
+<div class="flex flex-wrap w-screen">
+  <app-header
+    class="w-full"
+    label="Itens"
+    [hasButton]="true"
+    labelButton="Adicionar Item"
+    (buttonClick)="createItem = !createItem"
+  ></app-header>
+  @for (item of items$ | async; track $index) {
+    <div class="flex">
+      <img [src]="item.type" [alt]="item.name" />
+      <span>{{ item.name }}</span>
+      <span>{{ item.price | currency: "BRL" }}</span>
+      @if (item.stock) {
+        <span>{{ item.stock }}</span>
+      }
+    </div>
+  } @empty {}
+
+  <p-sidebar
+    [(visible)]="createItem"
+    position="bottom"
+    [style]="{ height: '500px' }"
+  >
+    <ng-template pTemplate="header">
+      <span class="font-semibold text-xl">Novo Item</span>
+    </ng-template>
+    <app-create-item></app-create-item>
+  </p-sidebar>
+</div>

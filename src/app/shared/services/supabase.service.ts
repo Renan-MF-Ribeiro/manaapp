@@ -1,5 +1,5 @@
 import { environment } from '@environments/environment';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   AuthSession,
   SupabaseClient,
@@ -7,6 +7,7 @@ import {
   createClient,
 } from '@supabase/supabase-js';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,7 @@ export class SupabaseService {
   currentUser: BehaviorSubject<User | boolean> = new BehaviorSubject<
     User | boolean
   >(false);
+  private _router = inject(Router);
 
   _session: AuthSession | null = null;
 
@@ -24,6 +26,9 @@ export class SupabaseService {
 
     this.supabase.auth.onAuthStateChange((event, sess) => {
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        if (sess?.user) {
+          this._router.navigate(['/home']);
+        }
         this.currentUser.next(sess ? sess.user : false);
       } else {
         this.currentUser.next(false);

@@ -1,0 +1,42 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="p-fluid p-formgrid p-grid flex gap-2 flex-col">
+    <div>
+      <label for="productName">Nome</label>
+      <input id="productName" pInputText formControlName="name" />
+    </div>
+    <div>
+      <label for="price">Preço</label>
+      <p-inputNumber
+        id="price"
+        inputId="currency-br"
+        mode="currency"
+        currency="BRL"
+        locale="pt-BR"
+        formControlName="price"
+      />
+    </div>
+
+    <div>
+      <label for="category">Categoria</label>
+      <p-dropdown
+        [options]="categories"
+        formControlName="category"
+      ></p-dropdown>
+    </div>
+
+    <div>
+      <label for="stock">Qtd.</label>
+      <p-inputNumber id="price" pInputNumber formControlName="stock" />
+    </div>
+
+    <div class="p-field p-col-12 flex gap-2">
+      <button pButton type="submit" label="Save"></button>
+      <button
+        pButton
+        type="button"
+        label="Discard"
+        class="p-button-secondary"
+      ></button>
+    </div>
+  </div>
+</form>
