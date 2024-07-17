@@ -6,16 +6,11 @@
     labelButton="Adicionar Item"
     (buttonClick)="createItem = !createItem"
   ></app-header>
-  @for (item of items$ | async; track $index) {
-    <div class="flex">
-      <img [src]="item.type" [alt]="item.name" />
-      <span>{{ item.name }}</span>
-      <span>{{ item.price | currency: "BRL" }}</span>
-      @if (item.stock) {
-        <span>{{ item.stock }}</span>
-      }
-    </div>
-  } @empty {}
+  <div class="flex flex-wrap gap-4 p-4">
+    @for (item of items$ | async; track $index) {
+      <app-item [item]="item"></app-item>
+    } @empty {}
+  </div>
 
   <p-sidebar
     [(visible)]="createItem"
@@ -25,6 +20,6 @@
     <ng-template pTemplate="header">
       <span class="font-semibold text-xl">Novo Item</span>
     </ng-template>
-    <app-create-item></app-create-item>
+    <app-create-item (createItem)="createdItem()"></app-create-item>
   </p-sidebar>
 </div>

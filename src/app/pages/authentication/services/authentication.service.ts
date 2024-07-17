@@ -86,6 +86,11 @@ export class AuthenticationService {
       .eq('id', user.id)
       .single();
   }
+
+  verifyUserLogged() {
+    return from(this.supabaseService.client.auth.getUser());
+  }
+
   async getProfile() {
     try {
       const user = this.supabaseService.currentUser.getValue();

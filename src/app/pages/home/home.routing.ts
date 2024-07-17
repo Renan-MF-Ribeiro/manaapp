@@ -6,7 +6,7 @@ const routes: Routes = [
     path: 'home',
     loadComponent: () =>
       import('./home.component').then((component) => component.HomeComponent),
-    // canActivate: [HomeGuard],
+    canActivate: [HomeGuard],
     children: [
       {
         path: 'items',

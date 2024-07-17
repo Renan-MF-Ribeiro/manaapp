@@ -26,9 +26,6 @@ export class SupabaseService {
 
     this.supabase.auth.onAuthStateChange((event, sess) => {
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-        if (sess?.user) {
-          this._router.navigate(['/home']);
-        }
         this.currentUser.next(sess ? sess.user : false);
       } else {
         this.currentUser.next(false);

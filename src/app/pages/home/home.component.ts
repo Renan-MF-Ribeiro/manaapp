@@ -7,7 +7,6 @@ import { DockModule } from 'primeng/dock';
   standalone: true,
   imports: [CommonModule, RouterModule, DockModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   actions = [

@@ -1,0 +1,21 @@
+<div class="flex flex-col w-[10.5rem] justify-center items-center">
+  <div
+    class="flex justify-center items-center bg-alternate rounded-full w-32 z-10"
+  >
+    <img
+      class="object-cover object-center"
+      [src]="image"
+      [alt]="item.name"
+      width="120px"
+    />
+  </div>
+  <div
+    class="flex flex-col bg-secondary rounded-button w-full justify-center items-center pt-24 -mt-20 p-1"
+  >
+    <span class="title_large text-center">{{ item.name }}</span>
+    <span class="title_medium">{{ item.price | currency: "BRL" }}</span>
+    @if (item.stock) {
+      <span class="title_small">{{ item.stock }}</span>
+    }
+  </div>
+</div>
