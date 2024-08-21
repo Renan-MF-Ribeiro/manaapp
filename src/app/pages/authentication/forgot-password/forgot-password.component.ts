@@ -39,19 +39,19 @@ export class ForgotPasswordComponent {
     if (this.form.valid) {
       this._loading.show();
       const value = this.form.getRawValue();
-      this._authenticationService.recoveryPassword(value.email!).subscribe({
-        next: (value) => {
-          this._loading.hide();
-          this._swalService
-            .success('Sucesso', 'Email de recupeção enviado')
-            .then(() => this._router.navigate(['']));
-        },
-        error: (error) => {
-          this._loading.hide();
-          console.error(error);
-          this._swalService.error('Ops', error);
-        },
-      });
+      // this._authenticationService.recoveryPassword(value.email!).subscribe({
+      //   next: (value) => {
+      //     this._loading.hide();
+      //     this._swalService
+      //       .success('Sucesso', 'Email de recupeção enviado')
+      //       .then(() => this._router.navigate(['']));
+      //   },
+      //   error: (error) => {
+      //     this._loading.hide();
+      //     console.error(error);
+      //     this._swalService.error('Ops', error);
+      //   },
+      // });
     }
   }
 }

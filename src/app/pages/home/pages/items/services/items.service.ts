@@ -1,37 +1,30 @@
 import { inject, Injectable } from '@angular/core';
-import { SupabaseService } from '@services/supabase.service';
-import { SupabaseClient } from '@supabase/supabase-js';
+import { StorageService } from '@services/storage.service';
 import { Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ItemsService {
-  private _supabase = inject(SupabaseService);
-  supabase!: SupabaseClient;
-  constructor() {
-    this.supabase = this._supabase.client;
-  }
+  private _storage = inject(StorageService);
 
   getAllItems(): Observable<any> {
-    return from(this.supabase.from('menu_items').select('*'));
+    return this._storage.get('items');
   }
 
   getItemById(id: string): Observable<any> {
-    return from(
-      this.supabase.from('menu_items').select('*').eq('id', id).single(),
-    );
+    return this._storage.get('items');
   }
 
   createItem(item: any): Observable<any> {
-    return from(this.supabase.from('menu_items').insert([item]));
+    return this._storage.put('items', item);
   }
 
   updateItem(id: string, item: any): Observable<any> {
-    return from(this.supabase.from('menu_items').update(item).eq('id', id));
+    return this._storage.put('items', item);
   }
 
   deleteItem(id: string): Observable<any> {
-    return from(this.supabase.from('menu_items').delete().eq('id', id));
+    return this._storage.delete('items');
   }
 }

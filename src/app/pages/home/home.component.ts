@@ -1,19 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { DockModule } from 'primeng/dock';
+import { MenuItem } from 'primeng/api/menuitem';
+import { TabMenuModule } from 'primeng/tabmenu';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, DockModule],
+  imports: [CommonModule, RouterModule, TabMenuModule],
   templateUrl: './home.component.html',
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  actions = [
-    { router: 'items', display: 'Itens', icon: 'pi-receipt' },
-    { router: 'order', display: 'Pedidos', icon: 'pi-shopping-bag' },
-    { router: 'Pagamentos', display: 'Caixa', icon: 'pi-shop' },
-    { router: 'Debts ', display: 'Dívidas', icon: 'pi-address-book' },
-    { router: 'profile ', display: 'Perfil', icon: 'pi-user' },
+  activeItem: MenuItem | undefined;
+
+  mobile = window.innerWidth < 700;
+  constructor() {
+    this.activeItem = this.actions[0];
+  }
+  actions: MenuItem[] = [
+    { label: 'Itens', icon: 'pi pi-receipt' },
+    { label: 'Pedidos', icon: 'pi pi-shopping-bag' },
+    { label: 'Caixa', icon: 'pi pi-shop' },
+    { label: 'Dívidas', icon: 'pi pi-address-book' },
+    { label: 'Perfil', icon: 'pi pi-user' },
   ];
+
+  onActiveItemChange(event: MenuItem) {
+    this.activeItem = event;
+  }
 }

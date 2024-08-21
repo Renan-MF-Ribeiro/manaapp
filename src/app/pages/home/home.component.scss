@@ -1,0 +1,25 @@
+::ng-deep .p-tabmenuitem,
+::ng-deep .p-menuitem-link {
+
+  justify-content: center;
+  transition: all 0.5s ease;
+
+  @media screen and (max-width:700px) {
+    flex-grow: 1;
+  }
+
+
+}
+
+::ng-deep .p-tabmenu-nav {
+  justify-content: flex-end;
+
+  @media screen and (min-width:700px) {
+    padding-right: 1.5rem;
+  }
+}
+
+::ng-deep .p-tabmenuitem.p-highlight a {
+
+  color: #369AD9 !important;
+}

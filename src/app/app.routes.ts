@@ -5,5 +5,5 @@ import { HomeRoutes } from '@pages/home/home.routing';
 export const routes: Routes = [
   ...AuthenticationRoutes,
   ...HomeRoutes,
-  { path: '**', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];

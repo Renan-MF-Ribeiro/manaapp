@@ -53,28 +53,28 @@ export class RegisterComponent {
     if (this.form.valid) {
       this._loading.show();
       const value = this.form.getRawValue();
-      this._authenticationService
-        .signUp(value.email!, value.password!)
-        .subscribe({
-          next: (value) => {
-            if (value.error) {
-              this._loading.hide();
-              console.error(value.error.message);
-              this._swalService.error('Ops', 'Erro ao realizar cadastro');
-            } else {
-              this._loading.hide();
-              console.log(value);
-              this._swalService
-                .success('Sucesso', 'Cadastro realizado com sucesso!')
-                .then(() => this._router.navigate(['home']));
-            }
-          },
-          error: (error) => {
-            this._loading.hide();
-            console.error(error);
-            this._swalService.error('Ops', error);
-          },
-        });
+      // this._authenticationService
+      //   .signUp(value.email!, value.password!)
+      //   .subscribe({
+      //     next: (value) => {
+      //       if (value.error) {
+      //         this._loading.hide();
+      //         console.error(value.error.message);
+      //         this._swalService.error('Ops', 'Erro ao realizar cadastro');
+      //       } else {
+      //         this._loading.hide();
+      //         console.log(value);
+      //         this._swalService
+      //           .success('Sucesso', 'Cadastro realizado com sucesso!')
+      //           .then(() => this._router.navigate(['home']));
+      //       }
+      //     },
+      //     error: (error) => {
+      //       this._loading.hide();
+      //       console.error(error);
+      //       this._swalService.error('Ops', error);
+      //     },
+      //   });
     } else {
       this._swalService.error(
         'Ops',

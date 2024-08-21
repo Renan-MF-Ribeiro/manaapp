@@ -1,11 +1,21 @@
-<div class="h-screen flex w-full bg-background">
-  <router-outlet></router-outlet>
-  <p-dock [model]="actions" position="bottom">
+<div class="h-screen flex-col flex w-full bg-background">
+  <div [ngClass]="{ 'mt-[58px]': !mobile }">
+    <router-outlet></router-outlet>
+  </div>
+  <p-tabMenu
+    class="w-full absolute"
+    [ngClass]="mobile ? ' bottom-0' : 'top-0'"
+    [model]="actions"
+    [activeItem]="activeItem"
+    (activeItemChange)="onActiveItemChange($event)"
+  >
     <ng-template pTemplate="item" let-item>
-      <div class="flex flex-col text-primaryText items-center gap">
-        <span class="pi text-3xl" [ngClass]="item.icon"></span>
-        <span>{{ item.display }}</span>
-      </div>
+      <a pRipple class="flex flex-col align-items-center gap-2 p-menuitem-link">
+        <span [class]="item.icon" style="font-size: 1.5rem"></span>
+        <span class="font-bold text-xs">
+          {{ item.label }}
+        </span>
+      </a>
     </ng-template>
-  </p-dock>
+  </p-tabMenu>
 </div>
