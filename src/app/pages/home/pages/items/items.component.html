@@ -5,10 +5,11 @@
     [hasButton]="true"
     labelButton="Adicionar Item"
     (buttonClick)="createItem = !createItem"
+    (searchEvent)="searchItems($event)"
   ></app-header>
-  <div class="flex flex-wrap gap-4 p-4">
+  <div class="flex flex-wrap gap-4 p-4 h-full w-full min-h-screen">
     @for (item of items$ | async; track $index) {
-      <app-item [item]="item"></app-item>
+      <app-item class="w-full" [item]="item" (editItem)="editItem($event)" />
     } @empty {}
   </div>
 
@@ -20,6 +21,9 @@
     <ng-template pTemplate="header">
       <span class="font-semibold text-xl">Novo Item</span>
     </ng-template>
-    <app-create-item (createItem)="createdItem()"></app-create-item>
+    <app-create-item
+      [item]="item"
+      (createItem)="createdItem()"
+    ></app-create-item>
   </p-sidebar>
 </div>

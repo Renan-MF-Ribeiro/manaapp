@@ -15,6 +15,13 @@ const routes: Routes = [
             (component) => component.ItemsComponent,
           ),
       },
+      {
+        path: 'orders',
+        loadComponent: () =>
+          import('./pages/orders/orders.component').then(
+            (component) => component.OrdersComponent,
+          ),
+      },
       { path: '**', redirectTo: 'items', pathMatch: 'full' },
     ],
   },

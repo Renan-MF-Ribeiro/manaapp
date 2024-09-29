@@ -1,0 +1,35 @@
+<div class="flex flex-wrap w-screen">
+  <app-header
+    class="w-full"
+    label="Pedidos"
+    [hasButton]="true"
+    labelButton="Adicionar Pedido"
+    (buttonClick)="newOrder()"
+    (searchEvent)="searchOrders($event)"
+  ></app-header>
+  <div class="flex flex-wrap p-4 h-full w-full gap-4">
+    @for (order of orders$ | async; track $index) {
+      <app-order
+        class="w-full h-fit"
+        [order]="order"
+        (editOrder)="editOrder($event)"
+      />
+    } @empty {}
+  </div>
+
+  <p-sidebar
+    [(visible)]="createOrder"
+    position="bottom"
+    [style]="{ height: '450px' }"
+  >
+    <ng-template pTemplate="header">
+      <span class="font-semibold text-xl">Novo Pedido</span>
+    </ng-template>
+    <app-create-order
+      class="h-full"
+      [order]="order"
+      (createOrder)="createdOrder()"
+      [lastOrderIndex]="lastOrderIndex"
+    ></app-create-order>
+  </p-sidebar>
+</div>

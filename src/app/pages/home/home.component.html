@@ -1,16 +1,20 @@
-<div class="h-screen flex-col flex w-full bg-background">
-  <div [ngClass]="{ 'mt-[58px]': !mobile }">
+<div class="h-auto flex-col flex w-full bg-background">
+  <div [ngClass]="{ 'mt-[58px]': !mobile, 'mb-[100px]': mobile }">
     <router-outlet></router-outlet>
   </div>
   <p-tabMenu
-    class="w-full absolute"
+    class="w-full fixed z-20"
     [ngClass]="mobile ? ' bottom-0' : 'top-0'"
     [model]="actions"
     [activeItem]="activeItem"
     (activeItemChange)="onActiveItemChange($event)"
   >
     <ng-template pTemplate="item" let-item>
-      <a pRipple class="flex flex-col align-items-center gap-2 p-menuitem-link">
+      <a
+        [routerLink]="item.routerLink"
+        pRipple
+        class="flex flex-col align-items-center gap-2 p-menuitem-link"
+      >
         <span [class]="item.icon" style="font-size: 1.5rem"></span>
         <span class="font-bold text-xs">
           {{ item.label }}

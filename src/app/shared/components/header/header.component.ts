@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -25,11 +25,13 @@ export class HeaderComponent implements OnInit {
   @Output() buttonClick = new EventEmitter();
   @Output() searchEvent = new EventEmitter<string>();
 
-  searchInput = new FormControl('');
+  searchForm = new FormGroup({
+    search: new FormControl(''),
+  });
 
   ngOnInit(): void {
-    this.searchInput.valueChanges
-      .pipe(debounceTime(300))
-      .subscribe((value) => (value ? this.searchEvent.emit(value) : null));
+    this.searchForm.valueChanges.pipe(debounceTime(300)).subscribe((value) => {
+      this.searchEvent.emit(value.search ?? '');
+    });
   }
 }

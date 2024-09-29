@@ -1,0 +1,32 @@
+<form
+  [formGroup]="productForm"
+  (ngSubmit)="onSubmit()"
+  class="h-full flex flex-col justify-between p-fluid p-formgrid"
+>
+  <div class="flex flex-col gap-2">
+    <label for="customerName">Cliente</label>
+    <input id="customerName" pInputText formControlName="customerName" />
+
+    <label for="items">Itens</label>
+    <p-multiSelect
+      [options]="(items$ | async) ?? []"
+      formControlName="items"
+      optionLabel="name"
+      id="items"
+      [filter]="false"
+      scrollHeight="130px"
+    ></p-multiSelect>
+
+    <label for="items">Status</label>
+    <p-dropdown [options]="status" formControlName="status"></p-dropdown>
+  </div>
+  <div class="p-field p-col-12 flex gap-2">
+    <button pButton type="submit" label="Salvar"></button>
+    <button
+      pButton
+      type="button"
+      label="Cancelar"
+      class="p-button-secondary"
+    ></button>
+  </div>
+</form>

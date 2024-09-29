@@ -1,0 +1,56 @@
+<div
+  class="flex justify-center items-center bg-secondary rounded-button p-4 w-full"
+>
+  <div
+    class="flex justify-center items-center bg-alternate rounded-full !w-20 !h-16 z-[1]"
+  >
+    @if (order.closed) {
+      <span
+        class="absolute ml-4 -mt-[7.5rem] title_small bg-error rounded-lg px-2"
+        >Fechado</span
+      >
+    }
+    <img
+      class="object-cover object-center"
+      src="../../../../../../../assets/images/order.png"
+      alt="order"
+      width="120px"
+    />
+  </div>
+  <div class="flex flex-col w-full justify-center items-center">
+    <span class="title_large text-center">{{ order.customerName }}</span>
+
+    @switch (order.status) {
+      @case ("pending") {
+        <div class="flex gap-2 items-center">
+          <span class="pi pi-clock title_small text-warning"></span>
+          <span class="title_small text-warning">Pendente</span>
+        </div>
+      }
+
+      @default {
+        <div class="flex gap-2 items-center">
+          <span class="pi pi-check title_small text-success"></span>
+          <span class="title_small text-success"
+            >Pago - {{ formOfPayment }}</span
+          >
+        </div>
+      }
+      @case ("credit") {
+        <div class="flex gap-2 items-center">
+          <span class="pi pi-address-book title_small text-error"></span>
+          <span class="title_small text-error">Marcado</span>
+        </div>
+      }
+    }
+    <span class="title_medium text-center">{{ total | currency: "BRL" }}</span>
+
+    <span class="title_small text-center text-wrap w-40">{{ itemsName }}</span>
+  </div>
+  <div class="flex flex-col justify-start gap-6 orders-start h-20">
+    <span
+      class="pi pi-pencil title_small cursor-pointer"
+      (click)="editOrder.emit(order)"
+    ></span>
+  </div>
+</div>

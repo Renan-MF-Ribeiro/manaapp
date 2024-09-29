@@ -18,11 +18,11 @@ export class HomeComponent {
     this.activeItem = this.actions[0];
   }
   actions: MenuItem[] = [
-    { label: 'Itens', icon: 'pi pi-receipt' },
-    { label: 'Pedidos', icon: 'pi pi-shopping-bag' },
-    { label: 'Caixa', icon: 'pi pi-shop' },
-    { label: 'Dívidas', icon: 'pi pi-address-book' },
-    { label: 'Perfil', icon: 'pi pi-user' },
+    { label: 'Itens', icon: 'pi pi-receipt', routerLink: 'items' },
+    { label: 'Pedidos', icon: 'pi pi-shopping-bag', routerLink: 'orders' },
+    { label: 'Caixa', icon: 'pi pi-shop', routerLink: 'cash' },
+    { label: 'Dívidas', icon: 'pi pi-address-book', routerLink: 'debts' },
+    { label: 'Perfil', icon: 'pi pi-user', routerLink: 'profile' },
   ];
 
   onActiveItemChange(event: MenuItem) {

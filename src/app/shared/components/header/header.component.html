@@ -8,12 +8,18 @@
       </div>
     </div>
     <div class="flex items-center justify-between gap-2">
-      <div class="w-full">
+      <form [formGroup]="searchForm" class="w-full">
         <p-iconField iconPosition="left">
           <p-inputIcon styleClass="pi pi-search" />
-          <input class="w-full" type="text" pInputText placeholder="Search" />
+          <input
+            formControlName="search"
+            class="w-full"
+            type="text"
+            pInputText
+            placeholder="Buscar"
+          />
         </p-iconField>
-      </div>
+      </form>
       <div *ngIf="hasButton" class="flex items-center justify-end">
         <button class="text-textColor px-4 py-2" (click)="buttonClick.emit()">
           <span class="pi pi-plus"></span>

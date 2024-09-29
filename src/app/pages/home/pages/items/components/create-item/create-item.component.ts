@@ -1,5 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -14,6 +23,7 @@ import { ItemsService } from '../../services/items.service';
 import { SwalService } from '@services/swal.service';
 import { LoadingService } from '@services/loading.service';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { MenuItem } from '../../models/item.model';
 @Component({
   selector: 'app-create-item',
   standalone: true,
@@ -28,12 +38,14 @@ import { InputNumberModule } from 'primeng/inputnumber';
   ],
   templateUrl: './create-item.component.html',
 })
-export class CreateItemComponent {
+export class CreateItemComponent implements OnChanges {
   private _menuItem = inject(ItemsService);
   private _swal = inject(SwalService);
   private _loading = inject(LoadingService);
 
   @Output() createItem = new EventEmitter();
+  @Input() item!: MenuItem;
+
   productForm!: FormGroup;
   categories = [
     { label: 'Doce', value: 'dessert' },
@@ -51,19 +63,55 @@ export class CreateItemComponent {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.item) {
+      this.productForm.patchValue(this.item);
+    }
+  }
+
   onSubmit() {
     if (this.productForm.valid) {
       this._loading.show();
-      this._menuItem.createItem(this.productForm.value).subscribe((value) => {
+      if (this.item) {
+        this.updateItem();
+      } else {
+        this.create();
+      }
+    }
+  }
+
+  updateItem() {
+    this._menuItem
+      .updateItem(this.item.id, this.productForm.value)
+      .subscribe((value) => {
         this._loading.hide();
-        this.createItem.emit();
-        if (value.error) {
-          this._swal.error('Ops', value.error.message);
+        if (!value) {
+          this.handleError('Erro ao atualizar item');
         } else {
-          this._swal.success('Sucesso', 'Item criado com sucesso');
-          this.productForm.reset();
+          this.handleSuccess('Item atualizado com sucesso');
         }
       });
-    }
+  }
+
+  create() {
+    this._menuItem.createItem(this.productForm.value).subscribe((value) => {
+      this._loading.hide();
+      if (!value) {
+        this.handleError('Erro ao criar item');
+      } else {
+        this.handleSuccess('Item criado com sucesso');
+      }
+    });
+  }
+
+  private handleError(message: string) {
+    this._swal.error('Ops', message);
+    this._loading.hide();
+  }
+
+  private handleSuccess(message: string) {
+    this._swal.success('Sucesso', message);
+    this.productForm.reset();
+    this.createItem.emit();
   }
 }

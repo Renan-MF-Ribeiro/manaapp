@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MenuItem } from '../../models/item.model';
 import { CommonModule } from '@angular/common';
 
@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './item.component.html',
 })
 export class ItemComponent {
+  @Output() editItem = new EventEmitter<MenuItem>();
   @Input({ required: true }) item!: MenuItem;
 
   imageType: { [x: string]: string } = {
