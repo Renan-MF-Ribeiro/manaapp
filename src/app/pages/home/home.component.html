@@ -1,5 +1,8 @@
-<div class="h-auto flex-col flex w-full bg-background">
-  <div [ngClass]="{ 'mt-[58px]': !mobile, 'mb-[100px]': mobile }">
+<div class="h-auto flex-col flex w-auto bg-background">
+  <div
+    class="w-full"
+    [ngClass]="{ 'mt-[100px]': !mobile, 'mb-[100px]': mobile }"
+  >
     <router-outlet></router-outlet>
   </div>
   <p-tabMenu

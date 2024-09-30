@@ -16,10 +16,6 @@ export class OrderComponent {
   @Output() editOrder = new EventEmitter<Order>();
   @Input({ required: true }) order!: Order;
 
-  get total() {
-    return calculateTotalValue(this.order.items);
-  }
-
   get itemsName() {
     return joinItemNames(this.order.items);
   }

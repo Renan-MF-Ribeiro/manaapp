@@ -43,7 +43,9 @@
         </div>
       }
     }
-    <span class="title_medium text-center">{{ total | currency: "BRL" }}</span>
+    <span class="title_medium text-center">
+      {{ order.totalValue | currency: "BRL" }}
+    </span>
 
     <span class="title_small text-center text-wrap w-40">{{ itemsName }}</span>
   </div>

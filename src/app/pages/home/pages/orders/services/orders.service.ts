@@ -104,4 +104,16 @@ export class OrdersService {
       ),
     );
   }
+
+  updateAllOrders(
+    updateFunction: (order: Order) => Order,
+  ): Observable<Order[]> {
+    return from(
+      this.getOrdersFromStorage().then((orders) => {
+        const updatedOrders = orders.map(updateFunction);
+        this.saveOrdersToStorage(updatedOrders);
+        return updatedOrders;
+      }),
+    );
+  }
 }

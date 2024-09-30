@@ -10,7 +10,7 @@ import {
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingService } from '@services/loading.service';
 import { SwalService } from '@services/swal.service';
-import { Order } from '../../model/order.model';
+import { calculateTotalValue, Order } from '../../model/order.model';
 import { OrdersService } from '../../services/orders.service';
 import { ItemsService } from '@pages/home/pages/items/services/items.service';
 import { CommonModule } from '@angular/common';
@@ -84,6 +84,7 @@ export class CreateOrderComponent implements OnChanges {
       this._loading.show();
       const order = this.productForm.getRawValue();
       order.date = new Date();
+      order.totalValue = calculateTotalValue(order.items);
       if (this.order) {
         this.updateOrder(order);
       } else {

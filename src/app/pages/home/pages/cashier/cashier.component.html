@@ -1,0 +1,87 @@
+<div class="flex flex-wrap w-screen">
+  <app-header
+    class="w-full"
+    label="Caixa"
+    [hasButton]="false"
+    [isSearchable]="false"
+    labelButton="Adicionar Item"
+  ></app-header>
+  <div class="flex flex-wrap w-full p-4 gap-4">
+    <div
+      class="flex flex-col flex-1 basis-24 bg-success rounded-lg p-2 justify-center items-center"
+    >
+      <span class="title_small">Dinheiro</span>
+      <div class="flex justify-center items-center gap-2 text-white">
+        <span class="pi pi-money-bill label_medium"></span>
+        <span class="label_medium">
+          {{ totalValueCash | currency: "BRL" }}
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex flex-col flex-1 basis-24 bg-success rounded-lg p-2 justify-center items-center"
+    >
+      <span class="title_small">Cartão</span>
+      <div class="flex justify-center items-center gap-2 text-white">
+        <span class="pi pi-credit-card label_medium"></span>
+        <span class="label_medium">
+          {{ totalValueCard | currency: "BRL" }}
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex flex-col flex-1 basis-24 bg-success rounded-lg p-2 justify-center items-center"
+    >
+      <span class="title_small">PIX</span>
+      <div class="flex justify-center items-center gap-2 text-white">
+        <span class="pi pi-qrcode label_medium"></span>
+        <span class="label_medium">
+          {{ totalValuePix | currency: "BRL" }}
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex flex-col flex-1 basis-40 bg-warning rounded-lg p-2 justify-center items-center"
+    >
+      <span class="title_small">Pendente</span>
+      <div class="flex justify-center items-center gap-2 text-white">
+        <span class="pi pi-clock"></span>
+        <span class="label_medium">
+          {{ totalValuePending | currency: "BRL" }}
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex flex-col flex-1 basis-40 bg-error !max-w-1/2 rounded-lg p-2 justify-center items-center"
+    >
+      <span class="title_small">Anotado</span>
+      <div class="flex justify-center items-center gap-2 text-white">
+        <span class="pi pi-address-book"></span>
+        <span class="label_medium">
+          {{ totalValueCredit | currency: "BRL" }}
+        </span>
+      </div>
+    </div>
+    <div
+      class="flex flex-col flex-1 basis-80 bg-primary rounded-lg p-2 justify-center items-center"
+    >
+      <span class="title_small">Total</span>
+      <div class="flex justify-center items-center gap-2 text-white">
+        <span class="pi pi-money-bill"></span>
+        <span class="label_medium">
+          {{ totalValueTotal | currency: "BRL" }}
+        </span>
+      </div>
+    </div>
+    <div class="flex justify-content items-center w-full">
+      <p-chart type="pie" [data]="data" [options]="options" class="w-full" />
+    </div>
+    <div class="w-full">
+      <p-button
+        styleClass="w-full bg-error border-error"
+        label="Fechar Pedidos"
+        (onClick)="closeAllOrders()"
+      />
+    </div>
+  </div>
+</div>

@@ -20,7 +20,7 @@ import { InputTextModule } from 'primeng/inputtext';
 export class HeaderComponent implements OnInit {
   @Input() label!: string;
   @Input() labelButton!: string;
-  @Input() isSearchable!: boolean;
+  @Input() isSearchable = true;
   @Input() hasButton!: boolean;
   @Output() buttonClick = new EventEmitter();
   @Output() searchEvent = new EventEmitter<string>();

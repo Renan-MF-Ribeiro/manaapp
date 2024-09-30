@@ -20,7 +20,7 @@ export class HomeComponent {
   actions: MenuItem[] = [
     { label: 'Itens', icon: 'pi pi-receipt', routerLink: 'items' },
     { label: 'Pedidos', icon: 'pi pi-shopping-bag', routerLink: 'orders' },
-    { label: 'Caixa', icon: 'pi pi-shop', routerLink: 'cash' },
+    { label: 'Caixa', icon: 'pi pi-shop', routerLink: 'cashier' },
     { label: 'Dívidas', icon: 'pi pi-address-book', routerLink: 'debts' },
     { label: 'Perfil', icon: 'pi pi-user', routerLink: 'profile' },
   ];

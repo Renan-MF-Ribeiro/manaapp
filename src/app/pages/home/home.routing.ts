@@ -22,7 +22,14 @@ const routes: Routes = [
             (component) => component.OrdersComponent,
           ),
       },
-      { path: '**', redirectTo: 'items', pathMatch: 'full' },
+      {
+        path: 'cashier',
+        loadComponent: () =>
+          import('./pages/cashier/cashier.component').then(
+            (component) => component.CashierComponent,
+          ),
+      },
+      { path: '**', redirectTo: 'cashier', pathMatch: 'full' },
     ],
   },
 ];

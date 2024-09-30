@@ -21,6 +21,7 @@
     "@angular/router": "^17.3.0",
     "@angular/service-worker": "^17.3.0",
     "@supabase/supabase-js": "^2.44.3",
+    "chart.js": "^4.4.4",
     "dotenv": "^16.4.5",
     "ngx-cookie": "^6.0.1",
     "prettier": "^3.3.3",
