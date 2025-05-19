@@ -97,8 +97,7 @@ export class OrdersService {
         orders.filter((order) =>
           !search
             ? !order.closed
-            : null ||
-              order.id.toLowerCase().includes(search.toLowerCase()) ||
+            : order.id.toLowerCase().includes(search.toLowerCase()) ||
               order.customerName.toLowerCase().includes(search.toLowerCase()),
         ),
       ),
